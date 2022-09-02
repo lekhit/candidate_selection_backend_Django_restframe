@@ -1,8 +1,7 @@
-from django.db import models
+from rest_framework import serializers
+from .models import Person
 
-# Create your models here.
-class Person(models.Model):
-  Fname=models.CharField(max_length=128)
+'''Fname=models.CharField(max_length=128)
   Lname=models.CharField(max_length=128)
   Resume=models.FileField(upload_to='uploads/% Y/% m/% d/',max_length=256,null=True,blank=True)
   #optional: could make it unique to ensure no fake accounts 
@@ -13,8 +12,17 @@ class Person(models.Model):
   Experience=models.TextField(blank=True,null=True)
   Educational_details=models.CharField(max_length=256)
 
-  def __str__(self):
-    dic={'Fname':self.Fname,'Lname':self.Lname,'Contact_Number':self.Contact_Number,
-          'Email':self.Email,'Status':self.Status,'About':self.About
-          }
-    return str(dic)
+'''
+
+class PersonSerializer(serializers.ModelSerializer):
+  class Meta:
+    model =Person
+    fields=['Fname',
+    'Lname',
+    "Contact_Number",
+    'Email',
+    'Status',
+    'About',
+    'Experience',
+    'Educational_details'
+    ]
