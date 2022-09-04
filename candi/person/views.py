@@ -8,8 +8,15 @@ class StatusUpdateAPIView(generics.UpdateAPIView):
     queryset=Person.objects.all()
     serializer_class=StatusSerializer
     lookup_field='pk'
-    
+
 Status_Update=StatusUpdateAPIView.as_view()
+
+class ResumeUpdateAPIView(generics.UpdateAPIView):
+    queryset=Person.objects.all()
+    serializer_class=StatusSerializer
+    lookup_field='pk'
+    
+Resume_Update=ResumeUpdateAPIView.as_view()
 class PersonDetailAPIView(generics.RetrieveAPIView):
     queryset=Person.objects.all()
     serializer_class=PersonSerializer
