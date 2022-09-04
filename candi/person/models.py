@@ -4,9 +4,9 @@ from django.db import models
 class Person(models.Model):
   Fname=models.CharField(max_length=128)
   Lname=models.CharField(max_length=128)
-  Resume=models.FileField(upload_to='uploads/% Y/% m/% d/',max_length=256,null=True,blank=True)
+  Resume=models.FileField(upload_to='uploads/%Y/%m/%d/',max_length=256,blank=True)
   #optional: could make it unique to ensure no fake accounts 
-  Contact_Number=models.DecimalField(max_digits=10,decimal_places=0,blank=True,null=True)
+  Contact_Number=models.CharField(max_length=10)
   Email=models.EmailField()
   Status=models.BooleanField(default=True)
   About = models.TextField(blank=True,null=True)

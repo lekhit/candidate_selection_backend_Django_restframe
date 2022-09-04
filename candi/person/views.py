@@ -2,8 +2,14 @@ from rest_framework import generics
 # Create your views here.
 
 from person.models import Person
-from person.serializer import PersonSerializer
+from person.serializer import PersonSerializer,StatusSerializer
 
+class StatusUpdateAPIView(generics.UpdateAPIView):
+    queryset=Person.objects.all()
+    serializer_class=StatusSerializer
+    lookup_field='pk'
+    
+Status_Update=StatusUpdateAPIView.as_view()
 class PersonDetailAPIView(generics.RetrieveAPIView):
     queryset=Person.objects.all()
     serializer_class=PersonSerializer
@@ -13,6 +19,7 @@ Person_Detail=PersonDetailAPIView.as_view()
 class PersonCreateAPIView(generics.CreateAPIView):
     queryset=Person.objects.all()
     serializer_class=PersonSerializer
+
 
 Person_Create_Detail=PersonCreateAPIView.as_view()
 

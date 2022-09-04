@@ -24,5 +24,19 @@ class PersonSerializer(serializers.ModelSerializer):
     'Status',
     'About',
     'Experience',
-    'Educational_details'
+    'Educational_details',
+    'Resume',
+    'id'
+    ]
+
+  def validate_Contact_Number(self,value):
+      if len(value)!=10:
+         raise serializers.ValidationError("Contact number incorrect")
+      return value
+
+class StatusSerializer(serializers.ModelSerializer):
+  class Meta:
+    model =Person
+    fields=['Status',
+    'id'
     ]
